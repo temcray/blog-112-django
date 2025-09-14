@@ -1,7 +1,13 @@
-{% extends "base.html" %}
+{% extends 'base.html'%}
+{% load static %}
 
+{%block title %}
+About Me
+{% endblock title %}
 
-{% block content %}
+{%block content %}
 <h1>About Me</h1>
-<p>Hello! My name is Tatiana E. I am learning full-stack web development, now in Django</p>
-{% endblock contant %}
+<p>This is about me using jinja</p>
+{% endblock content %}
+
+

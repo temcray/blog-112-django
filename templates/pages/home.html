@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+home
+{% endblock title %}
+
+
+{%block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css%}
+
+{%block content %}
+<h1>Hello yall I'm using Django</h1>
+<p>This is my first html file using junja tags!</p>
+{% endblock content%}
