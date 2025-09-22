@@ -5,15 +5,35 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav me-auto mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about'%}">About</a>
         </li>
-      
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="submit" value="Logout" class="nav-link active">
+          </form>
+
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login'%}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign Up</a>
+        </li>
+        {% endif %}
       </ul>
+      {% if user.is_authenticated %}
+      <div class="d-flex">
+        <span class="badge rounded-pill text-bg-success">{{user}}</span>
+      </div>
+      {% endif %}
     </div>
   </div>
 </nav>
