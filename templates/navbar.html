@@ -7,12 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about'%}">About</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list' %}">Posts</a>
         </li>
         {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'draft_list' %}">Drafts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'archived_list' %}">Archived</a>
+        </li>
         <li class="nav-item">
           <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
@@ -22,7 +31,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login'%}">Login</a>
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Sign Up</a>

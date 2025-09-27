@@ -11,8 +11,6 @@ class Status(models.Model):
         return self.name
 
 
-
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=256)
@@ -22,7 +20,11 @@ class Post(models.Model):
         on_delete=models.CASCADE
     )
     created_on = models.DateTimeField(auto_now_add=True)
-    
+    status = models.ForeignKey(
+        Status, 
+        on_delete=models.CASCADE,
+        
+    )
 
 
     def __str__(self):

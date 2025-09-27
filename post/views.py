@@ -1,34 +1,41 @@
 from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
-    DetailView,
-    CreateView,
-    DeleteView
+    
     
 )
 
-from .models import Post
-from django.contrib.auth.models import User
+from .models import Post, Status
 
 
 # Create your views here.
 class PostListView(ListView):
+  template_name = "post/list.html"
   model = Post
-  template_name = "posts/list.html"
+  context_object_name = "post_list"
+  status = Status.objects.get(name="published")
+  queryset = Post.objects.filter(status=status).order_by("created_on").reverse()
 
 
-class PostDetailView(DetailView):
-  model = Post
-  template_name = "posts/detail.html"
+  def get_context_data(self, **kwargs):
+    context = super() .get_context_data(**kwargs)
+    print(context)
+    return context
+    
+
+  class PostDraftListView(ListView):
+      template_name = "post/drafts"
+      status = Status.objects.get(name="draft")
+      queryset = Post.objects.filter(status=status).order_by("created_on").reverse()
 
 
-class PostCreateView(CreateView):
-  model = Post 
-  template_name = "posts/new.html"
-  fields = ["title", "content"]
+  class PostArchivedListView(ListView):
+      template_name = "post/archived_list.html"
+      context_object_name = "archived"
+      status = Status.objects.get(name="archived")
+      queryset = Post.objects.filter(status=status).order_by("created_on").reverse()
 
-  class PostDeleteView(DeleteView):
-    model = Post 
-    template_name = "posts/delete.html"
-    success_url = reverse_lazy("post_list")
+
+
+
 
