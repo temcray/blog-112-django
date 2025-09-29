@@ -9,7 +9,7 @@ def populate_status(apps, schema_editor):
         
     Status = apps.get_model("post", "Status")
     for key, value in entries.items():
-        status_obj = Status(name=key, description=value)
+        status_obj = Status(name=key, desription=value)
         status_obj.save()
 
 

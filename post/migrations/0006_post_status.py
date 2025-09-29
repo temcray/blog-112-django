@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('post', '0005_auto_20250925_1021'),
+        ('post', '0004_rename_desription_status_description'),
     ]
 
     operations = [

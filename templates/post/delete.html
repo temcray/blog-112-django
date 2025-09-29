@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %}
+  Delete post
+{% endblock %}
+
+{% block content %}
+    <div class="container-md">
+      <h1>Delete Post</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <a href="{% url 'detail' %}" class="btn btn-secondary">Remove</a>
+      </form>
+    </div>
+{% endblock %}

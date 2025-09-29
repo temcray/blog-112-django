@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update post
+{% endblock %}
+
+{% block content %}
+    <div class="container-md">
+      <h1>Update Post</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      </form>
+    </div>
+{% endblock %}
+        

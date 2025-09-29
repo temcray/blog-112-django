@@ -13,7 +13,7 @@ class Status(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=256)
+    subtitle = models.CharField(max_length=256, blank=True, null=True)
     body = models.TextField()
     author = models.ForeignKey(
         get_user_model(),
