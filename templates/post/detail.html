@@ -1,14 +1,15 @@
-{% entends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
-    {{post.title}}
+    {{detail.title}}
 {% endblock %}
 
-{% block context %}
-    <h1>Post #{{post.id}}</h1>
-    <h2>{{post.title}}</h2>
-    <h5>{{post.subtitle}}</h5>
-    <h6>{{post.author}}</h6>
-    <strong>Created on: {{post.created_on}}</strong>
-    <p>{{post.body}}</p>
+{% block content %}
+    <h1>Post #{{detail.id}}</h1>
+    <h2>{{detail.title}}</h2>
+    <h5>{{detail.subtitle}}</h5>
+    <h6>{{detail.author}}</h6>
+    <strong>Created on: {{detail.created_on}}</strong>
+    <p>{{detail.body}}</p>
+    
 {% endblock %}

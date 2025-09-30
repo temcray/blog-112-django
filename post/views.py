@@ -67,22 +67,24 @@ class PostCreatePostView(LoginRequiredMixin, CreateView):
   model = Post
   fields = ['title', 'subtitle', 'body', 'status']
 
-  def form_vaild(self,form):
+  def form_valid(self,form):
     form.instance.author = self.request.user
     return super().form_valid(form)
   
   
   
 
-  class PostDetailView(LoginRequiredMixin, DetailView):
-    template_name = "post/detail.html"
-    model = Post
+class PostDetailView(LoginRequiredMixin, DetailView):
+  template_name = "post/detail.html"
+  model = Post
+  context_object_name = "detail"
     
 
 class PostDeleteView(DeleteView):
   template_name = "post/delete.html"
   model = Post
   success_url = reverse_lazy("list")
+  
 
 
 class PostUpdateView(UpdateView):
